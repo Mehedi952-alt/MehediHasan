@@ -14,10 +14,6 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-defaults:
-  run:
-    working-directory: ./MehediHasan
-
 jobs:
   deploy:
     environment:
@@ -42,7 +38,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './MehediHasan/dist'
+          path: './dist'
           
       - name: Deploy to GitHub Pages
         id: deployment
