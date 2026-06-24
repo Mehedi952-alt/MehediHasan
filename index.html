@@ -6,127 +6,268 @@
     <title>Mehedi Hasan | CSE Student & Developer</title>
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
-            --text-color: #c9d1d9;
-            --accent-color: #58a6ff;
-            --border-color: #30363d;
+            --bg-color: #05050a;
+            --card-bg: rgba(16, 20, 35, 0.7);
+            --text-color: #8f9cae;
+            --accent-glow: #00ffcc;
+            --accent-purple: #9437ff;
+            --border-color: #1f293d;
+            --matrix-green: #00ff66;
         }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
             background-color: var(--bg-color);
+            background-image: 
+                linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px);
+            background-size: 25px 25px;
             color: var(--text-color);
             line-height: 1.6;
             margin: 0;
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
+            padding: 0;
+            overflow-x: hidden;
         }
-        .container {
-            max-width: 750px;
+
+        /* FLOATING MARQUEE SCROLLING TEXT */
+        .marquee-container {
             width: 100%;
+            background: rgba(0, 255, 204, 0.1);
+            border-bottom: 2px solid var(--accent-glow);
+            overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            padding: 8px 0;
         }
+
+        .marquee-text {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 25s linear infinite;
+            font-weight: bold;
+            color: var(--accent-glow);
+            text-shadow: 0 0 8px var(--accent-glow);
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate3d(100%, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        .container {
+            max-width: 800px;
+            width: 90%;
+            margin: 40px auto;
+            position: relative;
+        }
+
         header {
             text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
-        }
-        h1 {
-            color: #fff;
-            margin-bottom: 5px;
-        }
-        .subtitle {
-            color: var(--accent-color);
-            font-size: 1.1rem;
-            margin-top: 0;
-        }
-        section {
-            margin-bottom: 30px;
-        }
-        h2 {
-            color: #fff;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-        @media (max-width: 600px) {
-            .grid { grid-template-columns: 1fr; }
-        }
-        .card {
+            margin-bottom: 50px;
+            padding: 30px;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
         }
-        .card h3 {
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-glow), var(--accent-purple));
+        }
+
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-glow);
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
+            transition: all 0.4s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05) rotate(3deg);
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 30px rgba(148, 55, 255, 0.7);
+        }
+
+        h1 {
+            color: #fff;
+            margin: 5px 0;
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.1);
+        }
+
+        .subtitle {
+            color: var(--accent-glow);
+            font-size: 1.1rem;
+            font-weight: bold;
             margin-top: 0;
-            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
+
+        .bio-text {
+            max-width: 600px;
+            margin: 15px auto 0 auto;
+            color: #a0aec0;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #fff;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        h2::before {
+            content: ">";
+            color: var(--accent-purple);
+            font-weight: bold;
+        }
+
         .skills-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
             padding: 0;
             list-style: none;
         }
+
         .skills-list li {
-            background: #21262d;
+            background: rgba(31, 41, 61, 0.4);
             border: 1px solid var(--border-color);
-            padding: 5px 12px;
-            border-radius: 20px;
+            color: #e2e8f0;
+            padding: 8px 16px;
+            border-radius: 6px;
             font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .skills-list li:hover {
+            border-color: var(--accent-glow);
+            background: rgba(0, 255, 204, 0.05);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 255, 204, 0.15);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 650px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-purple);
+            box-shadow: 0 10px 25px rgba(148, 55, 255, 0.15);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 1.15rem;
+            letter-spacing: 0.5px;
+            border-left: 3px solid var(--accent-glow);
+            padding-left: 10px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 0;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>Mehedi Hasan</h1>
-        <p class="subtitle">Computer Science & Engineering Student @ DIU</p>
-        <p>Passionate software developer and game creator building systems from scratch.</p>
-    </header>
-
-    <section>
-        <h2>🚀 Core Tech Stack</h2>
-        <ul class="skills-list">
-            <li>C</li>
-            <li>C#</li>
-            <li>.NET</li>
-            <li>Godot Engine (2D/3D)</li>
-            <li>GDScript</li>
-            <li>Unity</li>
-            <li>Game Development</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>🛠️ Featured Projects</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>HonestStudyRecorder</h3>
-                <p>A desktop productivity and focus companion application built using the .NET framework to track and manage intense study sessions effectively.</p>
-            </div>
-            <div class="card">
-                <h3>Game Development Projects</h3>
-                <p>Designing and implementing modular game systems, character controllers, and custom physics mechanics across Unity and Godot environments.</p>
-            </div>
-            <div class="card">
-                <h3>Scientific Calculator</h3>
-                <p>A comprehensive, modular engineering program written in C featuring advanced arithmetic, logarithmic, and trigonometric mathematical operations.</p>
-            </div>
-            <div class="card">
-                <h3>Competitive Programming</h3>
-                <p>Actively engineering optimized data logic and tackling algorithmic challenges to continually refine core problem-solving structures.</p>
-            </div>
+    <!-- FLOATING SCROLLING TEXT -->
+    <div class="marquee-container">
+        <div class="marquee-text">
+            // INITIALIZING SYSTEM RUNTIME... STATUS: ACTIVE // ENGINE: GODOT & UNITY // COMPILING C# & .NET ARTIFACTS // REPOSITORY DEPLOYMENT SUCCESSFUL // CORE STACK ONLINE //
         </div>
-    </section>
-</div>
+    </div>
+
+    <div class="container">
+        <header>
+            <img src="592411282_122199794054551375_9198051934068183882_n.jpg" alt="Mehedi Hasan Profile Photo" class="profile-photo">
+            <h1>MEHEDI HASAN</h1>
+            <p class="subtitle">Computer Science & Engineering Student @ DIU</p>
+            <p class="bio-text">A software engineering student focused on building complex game mechanics, modular desktop tools, and optimized system software from scratch.</p>
+        </header>
+
+        <section>
+            <h2>SYSTEM_CORE // Tech Stack</h2>
+            <ul class="skills-list">
+                <li>C</li>
+                <li>C#</li>
+                <li>.NET Framework</li>
+                <li>Godot Engine (2D/3D)</li>
+                <li>GDScript</li>
+                <li>Unity Engine</li>
+                <li>Game Architecture</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>PROJECT_MODULES // Active Pipelines</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>HonestStudyRecorder</h3>
+                    <p>A specialized .NET desktop utility built to log and map high-intensity study routines, optimizing core productivity architecture.</p>
+                </div>
+                <div class="card">
+                    <h3>Kinematics & Systems</h3>
+                    <p>Designing custom physics parameters, precision control logic, and fluid movement scripts inside Unity and Godot nodes.</p>
+                </div>
+                <div class="card">
+                    <h3>Modular Scientific Engine</h3>
+                    <p>A native C calculation matrix designed with detached structural sub-modules for algorithmic arithmetic and advanced engineering math.</p>
+                </div>
+                <div class="card">
+                    <h3>Algorithmic Optimization</h3>
+                    <p>Writing and testing efficient logic profiles to scale resource-heavy processes, focusing heavily on runtime execution layout.</p>
+                </div>
+            </div>
+        </section>
+    </div>
 
 </body>
 </html>
