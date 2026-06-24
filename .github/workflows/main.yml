@@ -1,4 +1,4 @@
-name: Deploy Review App to Pages
+name: Deploy Static Content to Pages
 
 on:
   push:
@@ -24,45 +24,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Find package.json and Install Dependencies
-        run: |
-          if [ -f "./package.json" ]; then
-            echo "package.json found in root."
-            npm install --legacy-peer-deps
-          else
-            echo "Searching for package.json in subdirectories..."
-            TARGET_DIR=$(find . -name "package.json" -not -path "*/node_modules/*" | head -n 1 | xargs dirname)
-            if [ -n "$TARGET_DIR" ]; then
-              echo "Found package.json in directory: $TARGET_DIR"
-              cd "$TARGET_DIR"
-              npm install --legacy-peer-deps
-            else
-              echo "Error: package.json could not be found anywhere in the repository!"
-              exit 1
-            fi
-          fi
-        
-      - name: Build Project
-        run: |
-          if [ -f "./package.json" ]; then
-            npm run build
-          else
-            TARGET_DIR=$(find . -name "package.json" -not -path "*/node_modules/*" | head -n 1 | xargs dirname)
-            cd "$TARGET_DIR"
-            npm run build
-          fi
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: |
-            ./dist
-            ./**/dist
+          path: '.'
           
       - name: Deploy to GitHub Pages
         id: deployment
