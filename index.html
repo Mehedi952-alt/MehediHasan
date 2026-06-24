@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mehedi Hasan | CSE Student & Developer</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-color: #c9d1d9;
+            --accent-color: #58a6ff;
+            --border-color: #30363d;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 750px;
+            width: 100%;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+        h1 {
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            margin-top: 0;
+        }
+        section {
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #fff;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0;
+            list-style: none;
+        }
+        .skills-list li {
+            background: #21262d;
+            border: 1px solid var(--border-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Mehedi Hasan</h1>
+        <p class="subtitle">Computer Science & Engineering Student @ DIU</p>
+        <p>Passionate software developer and game creator building systems from scratch.</p>
+    </header>
+
+    <section>
+        <h2>🚀 Core Tech Stack</h2>
+        <ul class="skills-list">
+            <li>C</li>
+            <li>C#</li>
+            <li>Python</li>
+            <li>.NET</li>
+            <li>Godot Engine (2D/3D)</li>
+            <li>GDScript</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>🛠️ Featured Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>HonestStudyRecorder</h3>
+                <p>A desktop productivity and focus companion application built using the .NET framework to track and manage intense study sessions effectively.</p>
+            </div>
+            <div class="card">
+                <h3>Godot Game Projects</h3>
+                <p>Designing and implementing modular game systems, character controllers, and custom physics mechanics across both 2D and 3D environments.</p>
+            </div>
+            <div class="card">
+                <h3>Scientific Calculator</h3>
+                <p>A comprehensive, modular engineering program written in C featuring advanced arithmetic, logarithmic, and trigonometric mathematical operations.</p>
+            </div>
+            <div class="card">
+                <h3>Competitive Programming</h3>
+                <p>Actively engineering optimized data logic and tackling algorithmic challenges to continually refine core problem-solving structures.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
